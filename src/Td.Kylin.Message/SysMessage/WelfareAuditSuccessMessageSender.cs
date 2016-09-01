@@ -38,6 +38,8 @@ namespace Td.Kylin.Message.SysMessage
 
             if (welfare == null) throw new InvalidOperationException("福利信息不存在，无法继续发送消息");
 
+            _merchantID = welfare.MerchantID;
+
             var auditTimeString = (welfare.AuditTime ?? DateTime.Now).ToString("yyyy/MM/dd HH:mm:ss");
 
             base.ContentFactory(new { WelfareName = welfare.WelfareName, DateTime = auditTimeString, ServerPhone = serverPhone });
