@@ -8,7 +8,7 @@ namespace Td.Kylin.Message
     public sealed class MessageSenderExtensions
     {
         /// <summary>
-        /// 系统消息发送器生成
+        /// 消息发送器生成
         /// </summary>
         /// <param name="connectionString">数据库连接字符串</param>
         /// <param name="sqlType">数据库类型</param>

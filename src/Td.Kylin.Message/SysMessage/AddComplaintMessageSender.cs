@@ -26,7 +26,7 @@ namespace Td.Kylin.Message.SysMessage
         /// 初始化消息发送器
         /// </summary>
         /// <param name="complaintID">举报/投诉的ID</param>
-        /// <param name="userID">登录用户ID</param>
+        /// <param name="userID">举报/投诉人用户ID</param>
         public AddComplaintMessageSender(int complaintID, long userID) : base(MessageTemplateOption.ComplaintsSuccess)
         {
             _userID = userID;

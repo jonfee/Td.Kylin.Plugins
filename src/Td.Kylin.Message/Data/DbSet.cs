@@ -24,5 +24,7 @@ namespace Td.Kylin.Message.Data
         public  DbSet<User_Welfare> User_Welfare { get { return Set<User_Welfare>(); } }
 
         public  DbSet<Welfare_PartUser> Welfare_PartUser { get { return Set<Welfare_PartUser>(); } }
+
+        public  DbSet<Circle_EventUser> Circle_EventUser { get { return Set<Circle_EventUser>(); } }
     }
 }

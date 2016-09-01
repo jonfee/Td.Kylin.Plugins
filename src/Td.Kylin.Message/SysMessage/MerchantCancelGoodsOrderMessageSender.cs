@@ -5,7 +5,7 @@ using Td.Kylin.Message.Services;
 namespace Td.Kylin.Message.SysMessage
 {
     /// <summary>
-    /// 商家取消订单后消息发送器
+    /// 商家取消商品订单后消息发送器
     /// </summary>
     public class MerchantCancelGoodsOrderMessageSender : SysMessageSender
     {

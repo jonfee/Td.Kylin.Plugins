@@ -90,6 +90,13 @@ namespace Td.Kylin.Message.Data
             {
                 entity.HasKey(p => new { p.UserID, p.WelfareID });
             });
+            
+            //社区活动报名用户
+            modelBuilder.Entity<Circle_EventUser>(entity =>
+            {
+                entity.Property(p => p.EventUserId).ValueGeneratedNever();
+                entity.HasKey(p => p.EventUserId);
+            });
         }
     }
 }

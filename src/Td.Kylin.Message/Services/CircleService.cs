@@ -25,8 +25,24 @@ namespace Td.Kylin.Message.Services
                             TopicID = t.TopicID,
                             ForumID = t.ForumID,
                             Title = t.Title,
-                            UserID = t.UserID
+                            UserID = t.UserID,
+                            ItemId=t.ItemId
                         }).SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 获取活动报名的用户ID集合
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        public long[] GetEventUsers(long eventID)
+        {
+            using (var db = new DataContext())
+            {
+                return (from e in db.Circle_EventUser
+                    where e.EventID == eventID
+                    select e.UserID).ToArray();
             }
         }
     }

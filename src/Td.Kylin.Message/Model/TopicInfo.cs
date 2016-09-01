@@ -24,5 +24,10 @@
         /// 发帖用户ID
         /// </summary>
         public  long UserID { get; set; }
+
+        /// <summary>
+        /// 帖子对应的活动或商品ID
+        /// </summary>
+        public  long? ItemId { get; set; }
     }
 }

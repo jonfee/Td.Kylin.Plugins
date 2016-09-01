@@ -26,7 +26,7 @@ namespace Td.Kylin.Message.SysMessage
         /// 初始化消息发送器
         /// </summary>
         /// <param name="feedbackID">反馈的ID</param>
-        /// <param name="userID">登录用户ID</param>
+        /// <param name="userID">用户ID</param>
         public AddFeedbackMessageSender(int feedbackID, long userID) : base(MessageTemplateOption.FeedbackSuccess)
         {
             _userID = userID;
