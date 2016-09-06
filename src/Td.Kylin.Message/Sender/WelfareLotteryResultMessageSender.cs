@@ -2,12 +2,12 @@
 using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 福利开奖前提醒消息发送器
+    /// 福利开奖结果消息发送器
     /// </summary>
-    public class WelfareLotteryBeforeMessageSender:SysMessageSender
+    public class WelfareLotteryResultMessageSender : SysMessageSender
     {
         #region 属性
 
@@ -28,8 +28,9 @@ namespace Td.Kylin.Message.SysMessage
         /// 初始化消息发送器
         /// </summary>
         /// <param name="welfareID">福利ID</param>
-        public WelfareLotteryBeforeMessageSender(long welfareID)
-            : base(MessageTemplateOption.WelfareLottery)
+        /// <param name="serverPhone">客服电话</param>
+        public WelfareLotteryResultMessageSender(long welfareID, string serverPhone)
+            : base(MessageTemplateOption.WelfareFinish)
         {
             _welfareID = welfareID;
 
@@ -41,7 +42,7 @@ namespace Td.Kylin.Message.SysMessage
 
             _partUserIds = service.GetWelfarePartUsers(welfareID);
 
-            base.ContentFactory(new { WelfareName = welfareName});
+            base.ContentFactory(new { WelfareName = welfareName, ServerPhone = serverPhone });
         }
 
         /// <summary>

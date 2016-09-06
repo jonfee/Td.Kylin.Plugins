@@ -3,34 +3,34 @@ using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Core;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 社区帖子删除后消息发送器
+    /// 帖子被取消热门后消息发送器
     /// </summary>
-    public class TopicDeletedMesseageSender : SysMessageSender
+    public class TopicCancelHotMessageSender:SysMessageSender
     {
         #region 属性
 
         /// <summary>
         /// 帖子ID
         /// </summary>
-        private readonly long _topicID;
+        private long _topicID;
 
         /// <summary>
         /// 发帖用户ID
         /// </summary>
-        private readonly long _userID;
+        private long _userID;
 
         #endregion
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="topicID">被删除帖子的ID</param>
-        /// <param name="reason">被删除原因</param>
+        /// <param name="topicID">被取消热门帖子的ID</param>
+        /// <param name="reason">被取消热门原因</param>
         /// <param name="serverPhone">客服电话</param>
-        public TopicDeletedMesseageSender(long topicID, string reason, string serverPhone) : base(MessageTemplateOption.CircleTopicDeleted)
+        public TopicCancelHotMessageSender(long topicID, string reason, string serverPhone) : base(MessageTemplateOption.CancelHotByCircleTopic)
         {
             _topicID = topicID;
 

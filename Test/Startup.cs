@@ -35,16 +35,10 @@ namespace Test
             MessageSenderExtensions.Factory(
                 connectionString: sqlConn,
                 sqlType: Td.Kylin.EnumLibrary.SqlProviderType.SqlServer,
-               options: new DataCacheServerOptions
-               {
-                   KeepAlive = true,
-                   CacheItems = null,
-                   RedisConnectionString = "139.129.194.132:6399,abortConnect=false,password=kylinjonfee++",
-                   InitIfNull = false,
-                   SqlType = Td.Kylin.EnumLibrary.SqlProviderType.SqlServer,
-                   SqlConnection = sqlConn,
-                   Level2CacheSeconds = 600
-               });
+                redisOptions: "139.129.194.132:6399,abortConnect=false,password=kylinjonfee++",
+                cacheItems: null,
+                keepAlive: true,
+                level2CacheSeconds: 600);
         }
 
         public IConfigurationRoot Configuration { get; }

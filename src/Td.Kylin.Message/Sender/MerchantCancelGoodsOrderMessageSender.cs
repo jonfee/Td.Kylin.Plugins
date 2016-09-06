@@ -2,12 +2,12 @@
 using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 商家取消服务订单后消息发送器
+    /// 商家取消商品订单后消息发送器
     /// </summary>
-    public class MerchantCancelServiceOrderMessageSender : SysMessageSender
+    public class MerchantCancelGoodsOrderMessageSender : SysMessageSender
     {
         #region 属性
 
@@ -27,7 +27,7 @@ namespace Td.Kylin.Message.SysMessage
         /// 初始化消息发送器
         /// </summary>
         /// <param name="orderId">订单ID</param>
-        public MerchantCancelServiceOrderMessageSender(int orderId) : base(MessageTemplateOption.MerchantCancelServiceOrder)
+        public MerchantCancelGoodsOrderMessageSender(int orderId) : base(MessageTemplateOption.MerchantCancelGoodsOrder)
         {
             _orderID = orderId;
 

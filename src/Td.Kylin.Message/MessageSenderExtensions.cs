@@ -8,21 +8,19 @@ namespace Td.Kylin.Message
     public sealed class MessageSenderExtensions
     {
         /// <summary>
-        /// 消息发送器生成
+        /// 系统消息发送器构建
         /// </summary>
         /// <param name="connectionString">数据库连接字符串</param>
         /// <param name="sqlType">数据库类型</param>
-        /// <param name="options"><seealso cref="DataCacheServerOptions"/>缓存服务配置，如无需用到缓存时可为null</param>
-        public static void Factory(string connectionString, SqlProviderType sqlType, DataCacheServerOptions options = null)
+        /// <param name="redisOptions">Redis缓存服务器信息</param>
+        /// <param name="keepAlive">是否保持缓存服务器长连接</param>
+        /// <param name="cacheItems">需要缓存的数据类型</param>
+        /// <param name="level2CacheSeconds">二级缓存时间（单位：秒）</param>
+        public static void Factory(string connectionString, SqlProviderType sqlType, string redisOptions, bool keepAlive = true, CacheItemType[] cacheItems = null, int level2CacheSeconds = 30)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
             {
                 throw new ArgumentNullException(nameof(connectionString));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
             }
 
             Configs.SqlConnectionString = connectionString;
@@ -31,14 +29,17 @@ namespace Td.Kylin.Message
 
             if (CacheCollection.Count < 1)
             {
-                options.CacheItems = new CacheItemType[]
+                if (cacheItems == null || cacheItems.Length < 1)
                 {
-                    CacheItemType.SystemGolbalConfig,
-                    CacheItemType.AreaForum,
-                    CacheItemType.UserLevelConfig
-                };
+                    cacheItems = new[]
+                    {
+                        CacheItemType.SystemGolbalConfig,
+                        CacheItemType.AreaForum,
+                        CacheItemType.UserLevelConfig
+                    };
+                }
 
-                DataCacheExtensions.UseDataCache(options);
+                DataCacheExtensions.UseDataCache(redisOptions, keepAlive, cacheItems, level2CacheSeconds);
             }
         }
     }

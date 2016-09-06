@@ -2,7 +2,7 @@
 using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
     /// 商家确认商品订单后消息发送器

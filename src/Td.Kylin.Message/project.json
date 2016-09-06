@@ -5,7 +5,7 @@
     "NETStandard.Library": "1.6.0",
     "System.Reflection.TypeExtensions": "4.1.0",
     "Td.AspNet.Utils": "1.1.4",
-    "Td.Kylin.DataCache": "2.3.3",
+    "Td.Kylin.DataCache": "2.4.2",
     "Td.Kylin.EnumLibrary": "1.2.10"
   },
 

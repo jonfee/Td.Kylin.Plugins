@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Threading.Tasks;
-
-namespace Td.Kylin.Message.Model
+﻿namespace Td.Kylin.Message.Model
 {
     /// <summary>
     /// 用户等级信息

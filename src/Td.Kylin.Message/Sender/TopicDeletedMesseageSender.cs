@@ -3,12 +3,12 @@ using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Core;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 帖子被设置为热门后消息发送器
+    /// 社区帖子删除后消息发送器
     /// </summary>
-    public class TopicSetHotMessageSender : SysMessageSender
+    public class TopicDeletedMesseageSender : SysMessageSender
     {
         #region 属性
 
@@ -27,9 +27,10 @@ namespace Td.Kylin.Message.SysMessage
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="topicID">被设置热门帖子的ID</param>
+        /// <param name="topicID">被删除帖子的ID</param>
+        /// <param name="reason">被删除原因</param>
         /// <param name="serverPhone">客服电话</param>
-        public TopicSetHotMessageSender(long topicID, string serverPhone) : base(MessageTemplateOption.SetHotByCircleTopic)
+        public TopicDeletedMesseageSender(long topicID, string reason, string serverPhone) : base(MessageTemplateOption.CircleTopicDeleted)
         {
             _topicID = topicID;
 
@@ -41,7 +42,7 @@ namespace Td.Kylin.Message.SysMessage
 
             var forumName = CacheData.GetAreaForumName(topic.ForumID);
 
-            base.ContentFactory(new { ForumName = forumName, TopicTitle = topic.Title, ServerPhone = serverPhone });
+            base.ContentFactory(new { ForumName = forumName, TopicTitle = topic.Title, Reason = reason, ServerPhone = serverPhone });
         }
 
         /// <summary>

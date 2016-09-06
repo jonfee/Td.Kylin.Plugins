@@ -4,7 +4,7 @@ using Td.Kylin.Message.Core;
 using System;
 using System.Reflection;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
     /// 系统消息发送抽象类

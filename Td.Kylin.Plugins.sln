@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Td.Kylin.SMS", "Td.Kylin.SMS\Td.Kylin.SMS.xproj", "{CCBA27C3-C05C-4892-8470-E3411097AB78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

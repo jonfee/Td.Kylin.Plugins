@@ -1,12 +1,12 @@
 ﻿using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 提交反馈信息成功后消息发送器
+    /// 提交举报信息后消息发送器
     /// </summary>
-    public class AddFeedbackMessageSender:SysMessageSender
+    public class AddComplaintMessageSender : SysMessageSender
     {
         #region 属性
 
@@ -16,22 +16,22 @@ namespace Td.Kylin.Message.SysMessage
         private readonly long _userID;
 
         /// <summary>
-        /// 反馈ID
+        /// 举报/投诉ID
         /// </summary>
-        private readonly long _feedbackID;
+        private readonly long _complaintID;
 
         #endregion
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="feedbackID">反馈的ID</param>
-        /// <param name="userID">用户ID</param>
-        public AddFeedbackMessageSender(int feedbackID, long userID) : base(MessageTemplateOption.FeedbackSuccess)
+        /// <param name="complaintID">举报/投诉的ID</param>
+        /// <param name="userID">举报/投诉人用户ID</param>
+        public AddComplaintMessageSender(int complaintID, long userID) : base(MessageTemplateOption.ComplaintsSuccess)
         {
             _userID = userID;
 
-            _feedbackID = feedbackID;
+            _complaintID = complaintID;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Td.Kylin.Message.SysMessage
         /// <returns></returns>
         public override bool Send()
         {
-            return new MessageService().AddUserMessage(_userID, Option, _feedbackID.ToString(), Title, Content, "");
+            return new MessageService().AddUserMessage(_userID, Option, _complaintID.ToString(), Title, Content, "");
         }
     }
 }

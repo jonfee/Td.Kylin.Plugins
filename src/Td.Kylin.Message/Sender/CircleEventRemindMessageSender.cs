@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
     /// 社区活动提醒消息发送器

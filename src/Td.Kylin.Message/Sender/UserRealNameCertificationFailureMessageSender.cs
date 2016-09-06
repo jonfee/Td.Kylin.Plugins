@@ -1,35 +1,35 @@
 ﻿using Td.Kylin.EnumLibrary;
-using Td.Kylin.Message.Core;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 用户首次登录时消息发送器
+    /// 用户实名认证失败后消息发送器
     /// </summary>
-    public class FirstLoginMessageSender : SysMessageSender
+    public class UserRealNameCertificationFailureMessageSender : SysMessageSender
     {
         #region 属性
 
         /// <summary>
-        /// 登录用户ID
+        /// 用户ID
         /// </summary>
         private readonly long _userID;
 
         #endregion
 
+
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="areaID">当前登录时的区域</param>
-        /// <param name="userID">登录用户ID</param>
-        public FirstLoginMessageSender(int areaID, long userID) : base(MessageTemplateOption.FirstLogin)
+        /// <param name="userID">用户ID</param>
+        /// <param name="reason">审核失败原因</param>
+        /// <param name="serverPhone">客服电话</param>
+        public UserRealNameCertificationFailureMessageSender(long userID, string reason, string serverPhone)
+            : base(MessageTemplateOption.UserCertificationFailure)
         {
             _userID = userID;
 
-            var areaName = CacheData.GetAreaName(areaID);
-
-            base.ContentFactory(new { AreaName = areaName });
+            base.ContentFactory(new { Reason = reason, ServerPhone = serverPhone });
         }
 
         /// <summary>

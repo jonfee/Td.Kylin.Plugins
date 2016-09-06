@@ -1,12 +1,12 @@
 ﻿using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 实名认证成功后消息发送器
+    /// 提交反馈信息成功后消息发送器
     /// </summary>
-    public class UserRealNameCertificationSuccessMessageSender : SysMessageSender
+    public class AddFeedbackMessageSender:SysMessageSender
     {
         #region 属性
 
@@ -15,20 +15,23 @@ namespace Td.Kylin.Message.SysMessage
         /// </summary>
         private readonly long _userID;
 
-        #endregion
+        /// <summary>
+        /// 反馈ID
+        /// </summary>
+        private readonly long _feedbackID;
 
+        #endregion
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
+        /// <param name="feedbackID">反馈的ID</param>
         /// <param name="userID">用户ID</param>
-        /// <param name="serverPhone">客服电话</param>
-        public UserRealNameCertificationSuccessMessageSender(long userID, string serverPhone)
-            : base(MessageTemplateOption.UserCertificationSuccess)
+        public AddFeedbackMessageSender(int feedbackID, long userID) : base(MessageTemplateOption.FeedbackSuccess)
         {
             _userID = userID;
 
-            base.ContentFactory(new { ServerPhone = serverPhone });
+            _feedbackID = feedbackID;
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace Td.Kylin.Message.SysMessage
         /// <returns></returns>
         public override bool Send()
         {
-            return new MessageService().AddUserMessage(_userID, Option, _userID.ToString(), Title, Content, "");
+            return new MessageService().AddUserMessage(_userID, Option, _feedbackID.ToString(), Title, Content, "");
         }
     }
 }

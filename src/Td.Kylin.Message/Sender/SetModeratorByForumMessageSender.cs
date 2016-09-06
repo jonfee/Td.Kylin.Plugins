@@ -2,7 +2,7 @@
 using Td.Kylin.Message.Core;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
     /// 设置圈子版主后消息发送器

@@ -2,7 +2,7 @@
 using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
     /// 福利即将过期时提醒消息发送器

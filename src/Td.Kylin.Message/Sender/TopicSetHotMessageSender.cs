@@ -3,34 +3,33 @@ using Td.Kylin.EnumLibrary;
 using Td.Kylin.Message.Core;
 using Td.Kylin.Message.Services;
 
-namespace Td.Kylin.Message.SysMessage
+namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 帖子被取消热门后消息发送器
+    /// 帖子被设置为热门后消息发送器
     /// </summary>
-    public class TopicCancelHotMessageSender:SysMessageSender
+    public class TopicSetHotMessageSender : SysMessageSender
     {
         #region 属性
 
         /// <summary>
         /// 帖子ID
         /// </summary>
-        private long _topicID;
+        private readonly long _topicID;
 
         /// <summary>
         /// 发帖用户ID
         /// </summary>
-        private long _userID;
+        private readonly long _userID;
 
         #endregion
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="topicID">被取消热门帖子的ID</param>
-        /// <param name="reason">被取消热门原因</param>
+        /// <param name="topicID">被设置热门帖子的ID</param>
         /// <param name="serverPhone">客服电话</param>
-        public TopicCancelHotMessageSender(long topicID, string reason, string serverPhone) : base(MessageTemplateOption.CancelHotByCircleTopic)
+        public TopicSetHotMessageSender(long topicID, string serverPhone) : base(MessageTemplateOption.SetHotByCircleTopic)
         {
             _topicID = topicID;
 
@@ -42,7 +41,7 @@ namespace Td.Kylin.Message.SysMessage
 
             var forumName = CacheData.GetAreaForumName(topic.ForumID);
 
-            base.ContentFactory(new { ForumName = forumName, TopicTitle = topic.Title, Reason = reason, ServerPhone = serverPhone });
+            base.ContentFactory(new { ForumName = forumName, TopicTitle = topic.Title, ServerPhone = serverPhone });
         }
 
         /// <summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Td.Kylin.Message.SysMessage;
+using Td.Kylin.Message.Sender;
 
 namespace Test.Controllers
 {
@@ -15,9 +15,9 @@ namespace Test.Controllers
         public IEnumerable<string> Get()
         {
             AddComplaintMessageSender acSender=new AddComplaintMessageSender(100,100);
-            acSender.Send();
+            //acSender.Send();
 
-            return new string[] { "value1", "value2" };
+            return new string[] { acSender.Template, acSender.Content};
         }
 
         // GET api/values/5
