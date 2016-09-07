@@ -7,7 +7,7 @@ namespace Td.Kylin.Message.Sender
     /// <summary>
     /// 设置圈子版主后消息发送器
     /// </summary>
-    public class SetModeratorByForumMessageSender : SysMessageSender
+    public class SetModeratorByForumMessageSender : BaseSender
     {
         #region 属性
 

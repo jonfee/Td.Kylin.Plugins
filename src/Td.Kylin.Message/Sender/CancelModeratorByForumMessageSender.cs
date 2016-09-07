@@ -7,7 +7,7 @@ namespace Td.Kylin.Message.Sender
     /// <summary>
     /// 取消版主后消息发送器
     /// </summary>
-    public class CancelModeratorByForumMessageSender : SysMessageSender
+    public class CancelModeratorByForumMessageSender : BaseSender
     {
         #region 属性
 

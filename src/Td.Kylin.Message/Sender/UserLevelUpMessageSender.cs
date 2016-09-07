@@ -7,7 +7,7 @@ namespace Td.Kylin.Message.Sender
     /// <summary>
     /// 用户等级提升后消息发送器
     /// </summary>
-    public class UserLevelUpMessageSender : SysMessageSender
+    public class UserLevelUpMessageSender : BaseSender
     {
         #region 属性
 

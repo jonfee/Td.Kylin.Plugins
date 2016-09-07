@@ -4,9 +4,9 @@ using Td.Kylin.Message.Services;
 namespace Td.Kylin.Message.Sender
 {
     /// <summary>
-    /// 用户实名认证失败后消息发送器
+    /// 实名认证成功后消息发送器
     /// </summary>
-    public class UserRealNameCertificationFailureMessageSender : SysMessageSender
+    public class RealNameCertificateSuccessfulMessageSender : BaseSender
     {
         #region 属性
 
@@ -22,14 +22,13 @@ namespace Td.Kylin.Message.Sender
         /// 初始化消息发送器
         /// </summary>
         /// <param name="userID">用户ID</param>
-        /// <param name="reason">审核失败原因</param>
         /// <param name="serverPhone">客服电话</param>
-        public UserRealNameCertificationFailureMessageSender(long userID, string reason, string serverPhone)
-            : base(MessageTemplateOption.UserCertificationFailure)
+        public RealNameCertificateSuccessfulMessageSender(long userID, string serverPhone)
+            : base(MessageTemplateOption.RealNameCertificateSuccessful)
         {
             _userID = userID;
 
-            base.ContentFactory(new { Reason = reason, ServerPhone = serverPhone });
+            base.ContentFactory(new { ServerPhone = serverPhone });
         }
 
         /// <summary>

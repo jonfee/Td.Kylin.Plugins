@@ -5,6 +5,9 @@ using Td.Kylin.Message.Core;
 
 namespace Td.Kylin.Message
 {
+    /// <summary>
+    /// 系统消息发送器扩展
+    /// </summary>
     public sealed class MessageSenderExtensions
     {
         /// <summary>

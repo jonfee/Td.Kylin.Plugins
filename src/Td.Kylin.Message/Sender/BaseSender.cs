@@ -9,13 +9,13 @@ namespace Td.Kylin.Message.Sender
     /// <summary>
     /// 系统消息发送抽象类
     /// </summary>
-    public abstract class SysMessageSender
+    public abstract class BaseSender
     {
         /// <summary>
         /// 消息发送器初始化
         /// </summary>
         /// <param name="option">消息业务类型，<see cref="MessageTemplateOption"/>枚举</param>
-        protected SysMessageSender(MessageTemplateOption option)
+        protected BaseSender(MessageTemplateOption option)
         {
             Option = option;
             
