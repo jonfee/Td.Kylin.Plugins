@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Td.Kylin.Message;
 using Td.Kylin.DataCache;
+using Td.Kylin.SMS;
+using Td.Kylin.SMS.Config;
 
 namespace Test
 {
@@ -30,15 +32,24 @@ namespace Test
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            string sqlConn = "data source=139.129.194.132;initial catalog=Kylin_Test;user id=kylintest;password=kylintest++;MultipleActiveResultSets=True;";
+            //data source=139.129.194.132;initial catalog=Kylin_Test;user id=kylintest;password=kylintest++;MultipleActiveResultSets=True;
+            string sqlConn = "data source=192.168.1.200;initial catalog=KylinTest;user id=sa;password=sql100200;MultipleActiveResultSets=True;";
+
+            string redisConn = "139.129.194.132:6399,abortConnect=false,password=kylinjonfee++";
 
             MessageSenderExtensions.Factory(
                 connectionString: sqlConn,
                 sqlType: Td.Kylin.EnumLibrary.SqlProviderType.SqlServer,
-                redisOptions: "139.129.194.132:6399,abortConnect=false,password=kylinjonfee++",
+                redisOptions: redisConn,
                 cacheItems: null,
                 keepAlive: true,
                 level2CacheSeconds: 600);
+
+            SMSSenderExtensions.Factory(SmsProviderType.YunPian, new YuanPianConfig
+            {
+                ApiKey= "665acd4512ee858910f0f06bcf264621",
+                ApiUrl= "http://yunpian.com/v1/sms/send.json"
+            }, sqlConn, Td.Kylin.EnumLibrary.SqlProviderType.SqlServer, redisConn, true, null, 600);
         }
 
         public IConfigurationRoot Configuration { get; }

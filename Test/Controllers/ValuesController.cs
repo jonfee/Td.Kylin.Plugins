@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Td.Kylin.Message.Sender;
+using Td.Kylin.SMS.Sender;
 
 namespace Test.Controllers
 {
@@ -14,10 +15,13 @@ namespace Test.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            AddComplaintMessageSender acSender=new AddComplaintMessageSender(100,100);
+            UserLevelUpMessageSender acSender = new UserLevelUpMessageSender(100);
             //acSender.Send();
 
-            return new string[] { acSender.Template, acSender.Content};
+            RegistValidateCodeSmsSender rcSender = new RegistValidateCodeSmsSender("15920005942", "1234");
+            //var result = rcSender.SendAsync().Result;
+
+            return new string[] { acSender.Template, acSender.Content };
         }
 
         // GET api/values/5
