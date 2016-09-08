@@ -24,11 +24,12 @@ namespace Td.Kylin.SMS.Sender
         /// </summary>
         /// <param name="mobile">注册的手机号</param>
         /// <param name="code">验证码</param>
-        public RegistValidateCodeSmsSender(string mobile,  string code) : base(SmsTemplateOption.RegisterValidateCode)
+        /// <param name="minutes">验证码有效期（单位：分钟）</param>
+        public RegistValidateCodeSmsSender(string mobile, string code, int minutes) : base(SmsTemplateOption.RegisterValidateCode)
         {
             _mobile = mobile;
 
-            base.ContentFactory(new { Code = code });
+            base.ContentFactory(new { Code = code, Minutes = minutes });
         }
 
         public override async Task<bool> SendAsync()

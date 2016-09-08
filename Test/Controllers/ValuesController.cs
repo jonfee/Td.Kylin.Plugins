@@ -18,7 +18,7 @@ namespace Test.Controllers
             UserLevelUpMessageSender acSender = new UserLevelUpMessageSender(100);
             //acSender.Send();
 
-            RegistValidateCodeSmsSender rcSender = new RegistValidateCodeSmsSender("15920005942", "1234");
+            RegistValidateCodeSmsSender rcSender = new RegistValidateCodeSmsSender("15920005942", "1234", 2);
             //var result = rcSender.SendAsync().Result;
 
             return new string[] { acSender.Template, acSender.Content };

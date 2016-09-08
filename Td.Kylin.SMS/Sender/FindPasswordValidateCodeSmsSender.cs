@@ -24,11 +24,12 @@ namespace Td.Kylin.SMS.Sender
         /// </summary>
         /// <param name="mobile">注册的手机号</param>
         /// <param name="code">验证码</param>
-        public FindPasswordValidateCodeSmsSender(string mobile, string code) : base(SmsTemplateOption.FindPasswordValidateCode)
+        /// <param name="minutes">验证码有效期（单位：分钟）</param>
+        public FindPasswordValidateCodeSmsSender(string mobile, string code, int minutes) : base(SmsTemplateOption.FindPasswordValidateCode)
         {
             _mobile = mobile;
 
-            base.ContentFactory(new { Code = code });
+            base.ContentFactory(new { Code = code, Minutes = minutes });
         }
 
         public override async Task<bool> SendAsync()
