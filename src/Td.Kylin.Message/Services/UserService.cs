@@ -10,7 +10,42 @@ namespace Td.Kylin.Message.Services
     internal class UserService
     {
         /// <summary>
-        /// 获取用户等级信息
+        /// 获取用户账号及名称
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public InviteRegistatorInfo GetUseRegistatorInfo(long userId)
+        {
+            using (var db = new DataContext())
+            {
+                return (from u in db.User_Account
+                        where u.UserID == userId
+                        select new InviteRegistatorInfo
+                        {
+                            Name = u.Username,
+                            Account = u.Mobile
+                        }).SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 获取用户经验值 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public int GetUserEmpirical(long userId)
+        {
+            using (var db = new DataContext())
+            {
+                //经验值
+                return (from u in db.User_Account
+                        where u.UserID == userId
+                        select u.Empirical).SingleOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 获取用户等级及排名信息
         /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>

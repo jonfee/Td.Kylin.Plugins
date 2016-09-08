@@ -14,26 +14,23 @@ namespace Td.Kylin.Message.Sender
         /// <summary>
         /// 用户ID
         /// </summary>
-        private readonly long _userID;
+        private readonly long _userId;
 
         #endregion
-
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="userID">用户ID</param>
-        /// <param name="remark">等级说明</param>
-        public UserLevelUpMessageSender(long userID, string remark)
-            : base(MessageTemplateOption.UserLevelUpgrade)
+        /// <param name="userId">用户ID</param>
+        public UserLevelUpMessageSender(long userId): base(MessageTemplateOption.UserLevelUp)
         {
-            _userID = userID;
+            _userId = userId;
 
-            var userLevel = new UserService().GetUserLevelInfo(userID);
+            var empirical = new UserService().GetUserEmpirical(userId);
 
-            var levelName = CacheData.GetUserLevelName(userLevel.Empirical);
+            var levelName = CacheData.GetUserLevelName(empirical);
 
-            base.ContentFactory(new { LevelName = levelName, Number = levelName, LevelRemark = remark });
+            base.ContentFactory(new { LevelName = levelName});
         }
 
         /// <summary>
@@ -42,7 +39,10 @@ namespace Td.Kylin.Message.Sender
         /// <returns></returns>
         public override bool Send()
         {
-            return new MessageService().AddUserMessage(_userID, Option, _userID.ToString(), Title, Content, "");
+            //暂不发送消息，后期优化
+            //return new MessageService().AddUserMessage(_userID, Option, _userID.ToString(), Title, Content, "");
+
+            return true;
         }
     }
 }

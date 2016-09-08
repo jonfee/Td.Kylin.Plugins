@@ -41,7 +41,18 @@ namespace Td.Kylin.Message.Sender
 
             _inviterType = inviterType;
 
-            base.ContentFactory(new { });
+            string name = string.Empty;
+            string account = string.Empty;
+
+            var userInfo = new UserService().GetUseRegistatorInfo(registUserID);
+
+            if (null != userInfo)
+            {
+                name = userInfo.Name;
+                account = userInfo.Account;
+            }
+
+            base.ContentFactory(new { Name = name, Mobile = account });
         }
 
         /// <summary>

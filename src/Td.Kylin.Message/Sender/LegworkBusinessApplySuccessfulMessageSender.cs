@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Td.Kylin.EnumLibrary;
+﻿using Td.Kylin.EnumLibrary;
+using Td.Kylin.Message.Services;
 
 namespace Td.Kylin.Message.Sender
 {
@@ -11,13 +8,27 @@ namespace Td.Kylin.Message.Sender
     /// </summary>
     public class LegworkBusinessApplySuccessfulMessageSender : BaseSender
     {
-        public LegworkBusinessApplySuccessfulMessageSender() : base(MessageTemplateOption.WorkerLegworkBusinessApplySuccessful)
+        #region 属性
+
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        private readonly long _userId;
+
+        #endregion
+
+        /// <summary>
+        /// 初始化消息发送器实例
+        /// </summary>
+        /// <param name="userId"></param>
+        public LegworkBusinessApplySuccessfulMessageSender(long userId) : base(MessageTemplateOption.WorkerLegworkBusinessApplySuccessful)
         {
+            _userId = userId;
         }
 
         public override bool Send()
         {
-            throw new NotImplementedException();
+            return new MessageService().AddWorkerMessage(_userId, Option, _userId.ToString(), Title, Content, "");
         }
     }
 }

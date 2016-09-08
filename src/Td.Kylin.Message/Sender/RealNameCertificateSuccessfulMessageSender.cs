@@ -13,22 +13,17 @@ namespace Td.Kylin.Message.Sender
         /// <summary>
         /// 用户ID
         /// </summary>
-        private readonly long _userID;
+        private readonly long _userId;
 
         #endregion
-
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="userID">用户ID</param>
-        /// <param name="serverPhone">客服电话</param>
-        public RealNameCertificateSuccessfulMessageSender(long userID, string serverPhone)
-            : base(MessageTemplateOption.RealNameCertificateSuccessful)
+        /// <param name="userId">用户ID</param>
+        public RealNameCertificateSuccessfulMessageSender(long userId): base(MessageTemplateOption.RealNameCertificateSuccessful)
         {
-            _userID = userID;
-
-            base.ContentFactory(new { ServerPhone = serverPhone });
+            _userId = userId;
         }
 
         /// <summary>
@@ -37,7 +32,7 @@ namespace Td.Kylin.Message.Sender
         /// <returns></returns>
         public override bool Send()
         {
-            return new MessageService().AddUserMessage(_userID, Option, _userID.ToString(), Title, Content, "");
+            return new MessageService().AddWorkerMessage(_userId, Option, _userId.ToString(), Title, Content, "");
         }
     }
 }

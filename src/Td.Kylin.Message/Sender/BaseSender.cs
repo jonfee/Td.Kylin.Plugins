@@ -52,30 +52,7 @@ namespace Td.Kylin.Message.Sender
         public string Content { get; private set; }
 
         #endregion
-
-        /// <summary>
-        /// 消息内容生成
-        /// </summary>
-        /// <param name="paramsValues">消息模板中占位符与对应的参数值</param>
-        protected virtual void ContentFactory(Dictionary<string, string> paramsValues)
-        {
-            if (paramsValues != null && paramsValues.Count > 0)
-            {
-                try
-                {
-                    foreach (var kv in paramsValues)
-                    {
-                        string splitTag = string.Format(@"#{0}#", kv.Key);
-                        Content = Content.Replace(splitTag, kv.Value);
-                    }
-                }
-                catch
-                {
-                    Content = Template;
-                }
-            }
-        }
-
+        
         /// <summary>
         /// 消息内容生成
         /// </summary>

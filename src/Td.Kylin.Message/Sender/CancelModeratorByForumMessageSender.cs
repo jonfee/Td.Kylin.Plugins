@@ -17,7 +17,7 @@ namespace Td.Kylin.Message.Sender
         private readonly long _forumID;
 
         /// <summary>
-        /// 发帖用户ID
+        /// 版主用户ID
         /// </summary>
         private readonly long[] _userIDs;
 
@@ -26,25 +26,24 @@ namespace Td.Kylin.Message.Sender
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="forumID">圈子ID</param>
-        /// <param name="userID">被取消版主的用户ID</param>
-        public CancelModeratorByForumMessageSender(long forumID, long userID)
-            : this(forumID, new[] { userID })
+        /// <param name="forumId">圈子ID</param>
+        /// <param name="userId">被取消版主的用户ID</param>
+        public CancelModeratorByForumMessageSender(long forumId, long userId): this(forumId, new[] { userId })
         {
         }
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="forumID">圈子ID</param>
+        /// <param name="forumId">圈子ID</param>
         /// <param name="userIDs">被取消版主的用户ID集合</param>
-        public CancelModeratorByForumMessageSender(long forumID, long[] userIDs) : base(MessageTemplateOption.CancelModerator)
+        public CancelModeratorByForumMessageSender(long forumId, long[] userIDs) : base(MessageTemplateOption.CancelModerator)
         {
-            _forumID = forumID;
+            _forumID = forumId;
 
             _userIDs = userIDs;
 
-            var forumName = CacheData.GetAreaForumName(forumID);
+            var forumName = CacheData.GetAreaForumName(forumId);
 
             base.ContentFactory(new { ForumName = forumName});
         }

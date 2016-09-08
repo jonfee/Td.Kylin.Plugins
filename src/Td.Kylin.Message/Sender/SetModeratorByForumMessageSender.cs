@@ -14,10 +14,10 @@ namespace Td.Kylin.Message.Sender
         /// <summary>
         /// 圈子ID
         /// </summary>
-        private readonly long _forumID;
+        private readonly long _forumId;
 
         /// <summary>
-        /// 发帖用户ID
+        /// 版主ID
         /// </summary>
         private readonly long[] _userIDs;
 
@@ -26,29 +26,26 @@ namespace Td.Kylin.Message.Sender
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="forumID">圈子ID</param>
-        /// <param name="userID">被设为版主的用户ID</param>
-        /// <param name="serverPhone">客服电话</param>
-        public SetModeratorByForumMessageSender(long forumID, long userID, string serverPhone)
-            : this(forumID, new[] { userID }, serverPhone)
+        /// <param name="forumId">圈子ID</param>
+        /// <param name="userId">被设为版主的用户ID</param>
+        public SetModeratorByForumMessageSender(long forumId, long userId): this(forumId, new[] { userId })
         {
         }
 
         /// <summary>
         /// 初始化消息发送器
         /// </summary>
-        /// <param name="forumID">圈子ID</param>
+        /// <param name="forumId">圈子ID</param>
         /// <param name="userIDs">被设为版主的用户ID集合</param>
-        /// <param name="serverPhone">客服电话</param>
-        public SetModeratorByForumMessageSender(long forumID, long[] userIDs, string serverPhone) : base(MessageTemplateOption.SetModerator)
+        public SetModeratorByForumMessageSender(long forumId, long[] userIDs) : base(MessageTemplateOption.BecomeModerator)
         {
-            _forumID = forumID;
+            _forumId = forumId;
 
             _userIDs = userIDs;
 
-            var forumName = CacheData.GetAreaForumName(forumID);
+            var forumName = CacheData.GetAreaForumName(forumId);
 
-            base.ContentFactory(new { ForumName = forumName, ServerPhone = serverPhone });
+            base.ContentFactory(new { ForumName = forumName});
         }
 
         /// <summary>
@@ -57,7 +54,7 @@ namespace Td.Kylin.Message.Sender
         /// <returns></returns>
         public override bool Send()
         {
-            return new MessageService().AddUserMessage(_userIDs, Option, _forumID.ToString(), Title, Content, "");
+            return new MessageService().AddUserMessage(_userIDs, Option, _forumId.ToString(), Title, Content, "");
         }
     }
 }

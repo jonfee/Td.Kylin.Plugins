@@ -10,6 +10,25 @@ namespace Td.Kylin.Message.Services
     internal class MerchantService
     {
         /// <summary>
+        /// 获取商家账号及名称
+        /// </summary>
+        /// <param name="merchantID"></param>
+        /// <returns></returns>
+        public InviteRegistatorInfo GetUseRegistatorInfo(long merchantID)
+        {
+            using (var db = new DataContext())
+            {
+                return (from m in db.Merchant_Account
+                        where m.MerchantID == merchantID
+                        select new InviteRegistatorInfo
+                        {
+                            Name = m.Name,
+                            Account = m.Mobile
+                        }).SingleOrDefault();
+            }
+        }
+
+        /// <summary>
         /// 获取商家名称
         /// </summary>
         /// <param name="merchantID"></param>
