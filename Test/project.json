@@ -17,7 +17,7 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Td.Kylin.Message": "1.1.0",
     "Td.Kylin.DataCache": "2.4.2",
-    "Td.Kylin.SMS": "1.1.0"
+    "Td.Kylin.SMS": "1.1.1"
   },
 
   "tools": {
