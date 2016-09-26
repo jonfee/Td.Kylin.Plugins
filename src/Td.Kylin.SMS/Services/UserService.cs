@@ -31,12 +31,12 @@ namespace Td.Kylin.SMS.Services
         {
             using (var db = new DataContext())
             {
-                return (from u in db.User_Account
-                        where u.UserID == userId
+                return (from u in db.Worker_Account
+                        where u.WorkerID == userId
                         select new UserInfo
                         {
-                            Name = u.Username,
-                            Mobile = u.Mobile
+                            Name = u.FullName,
+                            Mobile = ""
                         }).SingleOrDefault();
             }
         }

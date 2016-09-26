@@ -15,7 +15,7 @@ namespace Td.Kylin.SMS.Sender
         {
             Option = option;
 
-            Template = "【天道新创】验证码为#Code#（切勿告知他人）";// CacheData.GetTemplate(option);
+            Template = CacheData.GetTemplate(option);//"【天道新创】验证码为#Code#（切勿告知他人）";
 
             Content = Template ?? string.Empty;
         }
@@ -58,7 +58,7 @@ namespace Td.Kylin.SMS.Sender
                     {
                         string splitTag = string.Format(@"#{0}#", propery.Name);
 
-                        var perperyValue = propery.GetValue(parameterObject) as string;
+                        var perperyValue = propery.GetValue(parameterObject) == null ? "" : propery.GetValue(parameterObject).ToString();
 
                         Content = Content.Replace(splitTag, perperyValue);
                     }

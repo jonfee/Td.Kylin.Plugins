@@ -9,6 +9,7 @@ namespace Td.Kylin.SMS.Data
         /// 用户
         /// </summary>
         public DbSet<User_Account> User_Account { get { return Set<User_Account>(); } }
+        public DbSet<Worker_Account> Worker_Account { get { return Set<Worker_Account>(); } }
 
         /// <summary>
         /// 短信记录

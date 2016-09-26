@@ -28,6 +28,13 @@ namespace Td.Kylin.SMS.Data
                 entity.Property(p => p.UserID).ValueGeneratedNever();
                 entity.HasKey(p => p.UserID);
             });
+            //用户
+            modelBuilder.Entity<Worker_Account>(entity =>
+            {
+                entity.Property(p => p.WorkerID).ValueGeneratedNever();
+                entity.HasKey(p => p.WorkerID);
+            });
+
 
             //短信发送记录
             modelBuilder.Entity<SmsSendRecords>(entity =>
