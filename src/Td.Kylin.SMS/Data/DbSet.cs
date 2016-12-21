@@ -40,5 +40,10 @@ namespace Td.Kylin.SMS.Data
         /// 运营商资产
         /// </summary>
         public DbSet<AreaOperator_Assets> AreaOperator_Assets { get { return Set<AreaOperator_Assets>(); } }
+
+        /// <summary>
+        /// 全局资源配置
+        /// </summary>
+        public DbSet<System_GlobalResources> System_GlobalResources { get { return Set<System_GlobalResources>(); } }
     }
 }

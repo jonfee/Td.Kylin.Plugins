@@ -41,9 +41,7 @@ namespace Td.Kylin.SMS.Sender
 
             _operatorAssetsService = new OperatorAssetsService();
 
-            var operatorService = new AreaOperatorService();
-
-            _operatorId = operatorService.GetOperator(areaId);
+            _operatorId = new AreaOperatorService().GetOperatorId(areaId);
 
             _workerMobile = new UserService().GetUserMobile(workerId);
 

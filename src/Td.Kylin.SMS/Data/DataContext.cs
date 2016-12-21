@@ -22,6 +22,11 @@ namespace Td.Kylin.SMS.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //系统全局配置
+            modelBuilder.Entity<System_GlobalResources>(entity =>
+            {
+                entity.HasKey(p => new { p.ResourceType, p.ResourceKey });
+            });
             //用户
             modelBuilder.Entity<User_Account>(entity =>
             {
@@ -34,8 +39,7 @@ namespace Td.Kylin.SMS.Data
                 entity.Property(p => p.WorkerID).ValueGeneratedNever();
                 entity.HasKey(p => p.WorkerID);
             });
-
-
+            
             //短信发送记录
             modelBuilder.Entity<SmsSendRecords>(entity =>
             {

@@ -44,11 +44,9 @@ namespace Td.Kylin.SMS.Sender
 
             _operatorAssetsService = new OperatorAssetsService();
 
-            var operatorService = new AreaOperatorService();
+            _operatorId = new AreaOperatorService().GetOperatorId(areaId);
 
-            _operatorId = operatorService.GetOperator(areaId);
-
-            _mobiles = operatorService.GetNoticeMobiles(_operatorId, OperatorBusinessNoticeType.LegworkBusinessApplyAudit);
+            _mobiles = CacheData.GetMobiles(areaId, OperatorBusinessNoticeType.LegworkBusinessApplyAudit);
 
             var balance = _operatorAssetsService.GetAssetsBalance(_operatorId, EnumLibrary.Operator.OperatorAssetsType.Sms);
 

@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Td.Kylin.Message", "src\Td.Kylin.Message\Td.Kylin.Message.xproj", "{FB55765D-8531-4446-9052-340E29DE7DA0}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Test", "Test\Test.xproj", "{2D8D5CB5-249B-432A-9B9A-684461B2A75E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AE198A9-DFC7-4D7C-AD14-CBE53101ADE5}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
@@ -26,10 +24,6 @@ Global
 		{FB55765D-8531-4446-9052-340E29DE7DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB55765D-8531-4446-9052-340E29DE7DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB55765D-8531-4446-9052-340E29DE7DA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D8D5CB5-249B-432A-9B9A-684461B2A75E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCBA27C3-C05C-4892-8470-E3411097AB78}.Release|Any CPU.ActiveCfg = Release|Any CPU

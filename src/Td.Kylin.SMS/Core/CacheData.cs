@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Td.Kylin.DataCache;
+﻿using System.Linq;
 using Td.Kylin.EnumLibrary;
+using Td.Kylin.SMS.Cache;
 
 namespace Td.Kylin.SMS.Core
 {
@@ -11,23 +10,28 @@ namespace Td.Kylin.SMS.Core
     internal sealed class CacheData
     {
         /// <summary>
-        /// 获取指定消息业务的配置信息
+        /// 获取短信模板
         /// </summary>
-        /// <param name="option">消息业务配置项<see cref="SmsTemplateOption"/>枚举</param>
+        /// <param name="option">短信业务配置项<see cref="SmsTemplateOption"/>枚举</param>
         /// <returns></returns>
         internal static string GetTemplate(SmsTemplateOption option)
         {
-            if (CacheCollection.SystemGolbalConfigCache != null)
-            {
-                var cacheValue = CacheCollection.SystemGolbalConfigCache.Get((int)GlobalConfigType.SMS, (int)option);
+            var item = SmsTemplateCache.Instance.Value.Where(p => p.Option == option).FirstOrDefault();
 
-                if (cacheValue != null)
-                {
-                    return cacheValue.Value;
-                }
-            }
+            return item?.Template;
+        }
 
-            return "";
+        /// <summary>
+        /// 获取指定区域通知类型的手机号
+        /// </summary>
+        /// <param name="areaId">区域ID</param>
+        /// <param name="noticeType">通知类型</param>
+        /// <returns></returns>
+        internal static string[] GetMobiles(int areaId, OperatorBusinessNoticeType noticeType)
+        {
+            return AreaNotifyCache.Instance.Value
+                .Where(p => p.AreaId == areaId && p.NoticeType == (int)noticeType && p.NoticeWay == (int)OperatorBusinessNoticeWay.SMS)
+                .Select(p => p.Mobile).ToArray();
         }
     }
 }
