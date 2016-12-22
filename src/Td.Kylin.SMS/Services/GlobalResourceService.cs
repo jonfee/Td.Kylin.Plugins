@@ -9,7 +9,7 @@ namespace Td.Kylin.SMS.Services
     /// <summary>
     /// 全局资源配置数据服务
     /// </summary>
-    public class GlobalResourceService
+     class GlobalResourceService
     {
         /// <summary>
         /// 获取短信模板

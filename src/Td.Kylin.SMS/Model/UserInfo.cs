@@ -8,7 +8,7 @@ namespace Td.Kylin.SMS.Model
     /// <summary>
     /// 获取用户信息
     /// </summary>
-    public class UserInfo
+    class UserInfo
     {
         public string Mobile { get; set; }
 

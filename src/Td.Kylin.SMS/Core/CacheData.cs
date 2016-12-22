@@ -7,7 +7,7 @@ namespace Td.Kylin.SMS.Core
     /// <summary>
     /// 缓存数据类
     /// </summary>
-    internal sealed class CacheData
+    sealed class CacheData
     {
         /// <summary>
         /// 获取短信模板

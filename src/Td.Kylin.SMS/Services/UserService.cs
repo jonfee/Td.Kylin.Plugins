@@ -7,7 +7,7 @@ namespace Td.Kylin.SMS.Services
     /// <summary>
     /// 用户数据服务
     /// </summary>
-    public class UserService
+     class UserService
     {
         /// <summary>
         /// 获取用户手机号

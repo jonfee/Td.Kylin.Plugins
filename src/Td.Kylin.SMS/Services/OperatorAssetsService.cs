@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Td.Kylin.EnumLibrary.Operator;
+using Td.Kylin.SMS.Cache;
 using Td.Kylin.SMS.Data;
 
 namespace Td.Kylin.SMS.Services
@@ -10,7 +11,7 @@ namespace Td.Kylin.SMS.Services
     /// <summary>
     /// 区域运营商资产数据服务
     /// </summary>
-    public class OperatorAssetsService
+     class OperatorAssetsService
     {
         /// <summary>
         ///  获取剩余资产数量 
@@ -22,8 +23,31 @@ namespace Td.Kylin.SMS.Services
         {
             using (var db = new DataContext())
             {
-               return  db.AreaOperator_Assets.Where(
-                        p => p.OperatorID == operatorId && p.AssetsType == (int) assetsType).Select(p=>p.Balance).FirstOrDefault();
+                return db.AreaOperator_Assets.Where(
+                         p => p.OperatorID == operatorId && p.AssetsType == (int)assetsType).Select(p => p.Balance).FirstOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// 获取区域运营商资产
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<AreaAssets> GetAreaAssets(OperatorAssetsType assetsType)
+        {
+            using (var db = new DataContext())
+            {
+                var query = from a in db.Area_OperatorRelation
+                            join b in db.AreaOperator_Assets
+                            on a.OperatorID equals b.OperatorID
+                            where a.StartTime <= DateTime.Now && a.EndTime > DateTime.Now && b.AssetsType == (int)assetsType
+                            select new AreaAssets
+                            {
+                                AreaId = a.AreaID,
+                                OperatorId = a.OperatorID,
+                                Balance = b.Balance
+                            };
+
+                return query.ToList();
             }
         }
 

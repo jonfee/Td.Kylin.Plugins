@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
+using Td.Kylin.Entity;
 using Td.Kylin.EnumLibrary;
+using Td.Kylin.SMS.ApiResult;
+using Td.Kylin.SMS.Cache;
 using Td.Kylin.SMS.Core;
+using Td.Kylin.SMS.Services;
 
 namespace Td.Kylin.SMS.Sender
 {
@@ -21,6 +26,13 @@ namespace Td.Kylin.SMS.Sender
         }
 
         #region ///////属性////////////////
+
+        /// <summary>
+        /// 实际发送的目标手机号
+        /// </summary>
+        protected string[] realSendMobiles { get; set; }
+
+        
 
         /// <summary>
         /// 消息模板
@@ -76,6 +88,51 @@ namespace Td.Kylin.SMS.Sender
         /// <returns></returns>
         public abstract Task<bool> SendAsync();
 
+        /// <summary>
+        /// 发送
+        /// </summary>
+        /// <param name="identityType"><seealso cref="IdentityType"/></param>
+        /// <param name="senderId">发送者ID</param>
+        /// <param name="mobiles">发送的目标手机号</param>
+        /// <param name="uid">业务ID</param>
+        /// <returns></returns>
+        internal async Task<SmsSendResult> SendSms(IdentityType identityType, long senderId, IEnumerable<string> mobiles, object uid)
+        {
+            try
+            {
+                string strId = (uid ?? string.Empty).ToString();
 
+                var result = await MiddlewareConfig.Options.SendProvider.SendSmsAsync(mobiles, Content, strId);
+
+                //添加发送记录
+                List<SmsSendRecords> records = new List<SmsSendRecords>();
+
+                foreach (var m in realSendMobiles)
+                {
+                    SmsSendRecords record = new SmsSendRecords
+                    {
+                        IsSuccess = result.IsSuccess,
+                        Message = Content,
+                        Mobile = m,
+                        Remark = result.Remark,
+                        SenderId = senderId,
+                        SenderType = (int)identityType,
+                        SmsType = (int)Option,
+                        SendID = IDProvider.NewId(),
+                        SendTime = DateTime.Now
+                    };
+
+                    records.Add(record);
+                }
+
+                new SmsSendRecordsService().AddRecord(records);
+
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Td.Kylin.SMS.ApiResult
     /// <summary>
     /// 云片短信发送返回结果
     /// </summary>
-    public class YunPianResult: SmsSendResult
+    class YunPianResult: SmsSendResult
     {
         /// <summary>
         /// Code 错误码

@@ -6,7 +6,7 @@ namespace Td.Kylin.SMS.Cache
     /// <summary>
     /// 区域通知配置缓存
     /// </summary>
-    public class AreaNotifyCache
+     class AreaNotifyCache
     {
         readonly static object locker = new object();
 

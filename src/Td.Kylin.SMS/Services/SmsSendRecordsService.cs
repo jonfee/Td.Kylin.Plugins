@@ -8,7 +8,7 @@ namespace Td.Kylin.SMS.Services
     /// <summary>
     /// 短信发送记录数据服务
     /// </summary>
-    public class SmsSendRecordsService
+     class SmsSendRecordsService
     {
         /// <summary>
         /// 添加短信发送记录

@@ -6,7 +6,7 @@ using Td.Kylin.SMS.Data;
 
 namespace Td.Kylin.SMS.Services
 {
-    public class AreaOperatorService
+     class AreaOperatorService
     {
         public long GetOperatorId(int areaId)
         {

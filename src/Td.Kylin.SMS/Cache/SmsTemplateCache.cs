@@ -6,7 +6,7 @@ namespace Td.Kylin.SMS.Cache
     /// <summary>
     /// 短信模板缓存
     /// </summary>
-    public class SmsTemplateCache
+     class SmsTemplateCache
     {
         readonly static object locker = new object();
 

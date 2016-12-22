@@ -8,7 +8,7 @@ namespace Td.Kylin.SMS.Provider
     /// <summary>
     /// 短信发送接口
     /// </summary>
-    internal interface ISendProvider
+     interface ISendProvider
     {
         /// <summary>
         /// 发送短信

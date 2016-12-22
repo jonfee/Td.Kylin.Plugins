@@ -3,7 +3,7 @@
     /// <summary>
     /// 区域通知配置
     /// </summary>
-    public class AreaNotify
+     class AreaNotify
     {
         /// <summary>
         /// 区域ID

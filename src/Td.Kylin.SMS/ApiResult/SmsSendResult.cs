@@ -3,7 +3,7 @@
     /// <summary>
     /// 短信发送结果抽象类
     /// </summary>
-    public abstract class SmsSendResult
+    abstract class SmsSendResult
     {
         /// <summary>
         /// 是否成功

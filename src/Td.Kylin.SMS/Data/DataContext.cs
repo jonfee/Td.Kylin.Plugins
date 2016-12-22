@@ -5,14 +5,14 @@ using Td.Kylin.SMS.Core;
 
 namespace Td.Kylin.SMS.Data
 {
-    internal partial class DataContext : DbContext
+    partial class DataContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            switch (ConfigRoot.SqlType)
+            switch (MiddlewareConfig.Options.SqlType)
             {
                 case EnumLibrary.SqlProviderType.SqlServer:
-                    optionsBuilder.UseSqlServer(ConfigRoot.SqlConnectionString);
+                    optionsBuilder.UseSqlServer(MiddlewareConfig.Options.SqlConnectionString);
                     break;
                 case EnumLibrary.SqlProviderType.NpgSQL:
                     throw new InvalidOperationException("暂未实现对NpgSQL数据库的支持");

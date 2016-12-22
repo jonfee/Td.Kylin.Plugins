@@ -5,7 +5,7 @@ namespace Td.Kylin.SMS.Cache
     /// <summary>
     /// 短信模板
     /// </summary>
-    public class SmsTemplate
+     class SmsTemplate
     {
         /// <summary>
         /// 模板业务项

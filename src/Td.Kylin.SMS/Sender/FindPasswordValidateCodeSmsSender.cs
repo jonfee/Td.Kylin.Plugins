@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Td.Kylin.Entity;
+﻿using System.Threading.Tasks;
 using Td.Kylin.EnumLibrary;
-using Td.Kylin.SMS.Core;
-using Td.Kylin.SMS.Services;
 
 namespace Td.Kylin.SMS.Sender
 {
@@ -34,26 +28,9 @@ namespace Td.Kylin.SMS.Sender
 
         public override async Task<bool> SendAsync()
         {
-            var result = await ConfigRoot.SendProvider.SendSmsAsync(_mobile, Content, _mobile);
+            var result = await base.SendSms(IdentityType.Platform, 0, new[] { _mobile }, _mobile);
 
-            bool success = result.IsSuccess;
-
-            SmsSendRecords record = new SmsSendRecords
-            {
-                IsSuccess = success,
-                Message = Content,
-                Mobile = _mobile,
-                Remark = result.Remark,
-                SenderId = 0,
-                SenderType = (int)IdentityType.Platform,
-                SmsType = (int)SmsTemplateOption.FindPasswordValidateCode,
-                SendID = IDProvider.NewId(),
-                SendTime = DateTime.Now
-            };
-
-            new SmsSendRecordsService().AddRecord(record);
-
-            return success;
+            return result.IsSuccess;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Td.Kylin.SMS.Services
     /// <summary>
     /// 区域通知数据服务
     /// </summary>
-    public class AreaNotifyService
+     class AreaNotifyService
     {
         /// <summary>
         /// 获取区域通知配置

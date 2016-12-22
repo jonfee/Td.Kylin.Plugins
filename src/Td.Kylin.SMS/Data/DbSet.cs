@@ -3,7 +3,7 @@ using Td.Kylin.Entity;
 
 namespace Td.Kylin.SMS.Data
 {
-    internal partial class DataContext
+    partial class DataContext
     {
         /// <summary>
         /// 用户

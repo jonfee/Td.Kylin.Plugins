@@ -5,7 +5,7 @@ namespace Td.Kylin.SMS.Core
     /// <summary>
     /// ID生成器
     /// </summary>
-    internal sealed class IDProvider
+    sealed class IDProvider
     {
         /// <summary>
         /// 生成一个新的ID

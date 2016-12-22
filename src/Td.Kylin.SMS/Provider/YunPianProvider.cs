@@ -14,7 +14,7 @@ namespace Td.Kylin.SMS.Provider
     /// <summary>
     /// 云片短信服务
     /// </summary>
-    public class YunPianProvider : ISendProvider
+    class YunPianProvider : ISendProvider
     {
         #region 云片短信接口参数
 
